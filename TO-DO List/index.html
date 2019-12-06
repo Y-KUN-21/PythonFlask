@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+   
+</head>
+
+<body>
+
+<h1>To-Do List</h1>
+
+<div class="EnterTask">
+	 <form action="/" method="POST">
+		 <input id="EnterTaskid" type="text" placeholder="Enter Tasks.." name="content" value="{{request.form.Tasks}}">
+		 <input type="submit" id="btn1"  href="{{ url_for('adding') }}" name="AddTask" value="AddTask">
+	 </form>
+ <br>
+
+ <button type="button" id="btn2" onclick="location.href='/viewtask/';">View tasks</button>
+
+</div>
+<br>
+</body>
+</html>
