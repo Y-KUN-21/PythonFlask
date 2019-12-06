@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <style type="text/css">
+    body
+    {
+      background-color: #0c0c1a;
+    }
+     
+    #content_id
+    {
+      margin:auto;
+      margin-left:460px;
+      width: 20%;
+      height: 24px;
+      padding:5px;
+      border: 1px solid #6ba4ff;
+     font-family: 'helvetica';
+      
+      }
+
+      h1
+      {
+        text-align: center;
+        font-family: 'helvetica';
+        color: white;
+      }
+     
+      #update_id
+      {
+          width: 10%;
+          margin: auto;
+          background-color: #4CAF50;
+          border: 2px solid #4CAF50;
+          padding: 8px 8px;
+          color: white;
+          text-align: center;
+          font-family: 'helvetica';
+          border-radius: 2px;
+          
+          color: white;
+          font-style: bold;
+        }
+
+
+    
+    </style>
+   
+</head>
+
+<body>
+
+<h1>Updating</h1>
+
+   <form action="/update/{{task.id}}" method="POST">
+     <input type="text" placeholder="Enter Tasks.." id="content_id" name="content" value="{{task.content}}">
+     <input type="submit"onclick="location.href='/update/{{task.id}}" id="update_id" name="content" value="Update">
+   </form>
+ <br>
+</div>
+<br>
+</body>
+</html>
