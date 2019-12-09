@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import requests
 
 app = Flask(__name__)
 
@@ -9,7 +10,10 @@ def search():
 
 @app.route('/get_weather/')
 def get_weather():
-    return "yes"
+    url= 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=78c2cd272dcb82ff19017de3db518bdf'
+    City='Mumbai'
+    r=requests.get(url.format(City)).json()
+    return (r)
 
 
 if __name__ == "__main__":
