@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>WeatherApp</title>
+    <link rel="shortcut icon" type="image/png" href="https://tinyurl.com/wx32fr7">
+    <style type="text/css">
+       body
+		{
+		 background-image:  url("https://free4kwallpapers.com/uploads/originals/2019/06/03/firewatch-background-wallpaper.jpg");
+		 background-repeat: no-repeat;
+		 background-size: 100%; 
+
+		}
+    	p
+    	{
+    		padding: 0px;
+    		text-align: left;
+    		margin-left: 45%;
+    		font-size: 20px;
+    		font-family: helvetica;
+    		font-weight: bold;
+    		color: #2D112A;
+    		
+    	}
+    	#city
+    	{
+    		margin-top: 50px;
+    	}
+  
+    	img
+    	{
+    		margin-left:38%;
+    		margin-top: 2%;
+    		position: relative;
+    		float: left;
+
+    	}
+    	
+    </style>
+</head>
+<body>
+	<div>
+ <img src="http://openweathermap.org/img/w/{{weather.icon}}.png" alt="image">
+ <p id="city">In  {{weather.City}},{{weather.Country}}</p1>
+ <p>it's {{weather.description}}</p>
+ <p>And temperature is {{weather.temperature}} Fahrenheit.</p>
+ </div>
+
+</body>
+</html>
