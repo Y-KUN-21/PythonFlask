@@ -7,10 +7,10 @@
     <link rel="shortcut icon" type="image/png" href="https://tinyurl.com/wx32fr7">
 </head>
 <body>
-	<div id="main">
+    <form action="{{ url_for('get_weather') }}" method="POST">
 		<input type="text" name="enter_city" id="enter_city_id" placeholder="Enter City name">
-		<input type="submit" name="search_city" id="search_city_id" onclick="location.href='/get_weather/'" value="Search">
-	</div>
+		<input  type="submit" name="search_city" id="search_city_id" href="{{ url_for('get_weather') }}" value="Search">
+	</form>
 
 </body>
 </html>
