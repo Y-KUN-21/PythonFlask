@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exchange Rates</title>
+    <link rel="stylesheet" href="static/main.css">
+
+     <!--favicon-->
+    <link rel="shortcut icon" type="image/png" href="https://cdn.iconscout.com/icon/free/png-512/indian-rupee-money-currency-finance-business-11-6743.png">
+
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+
+
+
+</head>
+<body>
+    <form id="form" >
+		<input type="text" name="Currency" id="Currency"  placeholder="Enter Currency">
+		<input  type="submit" value="Get Exchange">
+
+		<li id="ExRates"></li>
+	</form>
+
+
+</body>
+</html>
