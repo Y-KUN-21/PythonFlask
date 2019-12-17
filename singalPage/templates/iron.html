@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iron</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>
+        {
+            load_info('iron');
+
+            document.querySelectorAll(".metal-class").forEach(link =>{
+                link.onclick=()=>{
+                    load_info(link.dataset.page);
+                    return false;
+                }
+            });
+        });
+
+        function load_info(name)
+        {
+            const request = new XMLHttpRequest();
+            request.open('GET',`/${name}`);
+            request.onload=()=>
+            {
+                const response=request.responseText;
+                document.querySelector('#req_info').innerHTMl= response;
+
+            };
+           request.send();
+        }
+    </script>
+    <script type="text/javascript"></script>
+</head>
+<body>
+<ul id="metals-id">
+   <li> <a href="" class="metal-class" data-page="iron">Iron</a><hr></li>
+   <li><a href="" class="metal-class" data-page="copper">Copper</a><hr></li>
+   <li><a href="" class="metal-class" data-page="gold">Gold</a><hr></li>
+</ul>
+<hr>
+<p id="req_info"></p>
+
+</body>
+</html>
