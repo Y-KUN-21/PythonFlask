@@ -23,7 +23,7 @@
             request.onload=()=>
             {
                 const response=request.responseText;
-                document.querySelector('#req_info').innerHTMl= response;
+                document.querySelector('#req_info').innerHTML= response;
 
             };
            request.send();
