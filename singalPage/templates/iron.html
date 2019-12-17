@@ -23,19 +23,34 @@
             request.onload=()=>
             {
                 const response=request.responseText;
-                document.querySelector('#req_info').innerHTML= response;
+                document.querySelector('#req_info').innerHTML = response;
+
+                //push and save Url and title
+                document.title=name;
+                history.pushState({'Pagetitle':name,'info':response},name,name);
 
             };
            request.send();
+
         }
+
+        //onpop(when user click back button)
+        window.onpopstate=para =>
+        {
+            const Data=para.state;
+            document.title=Data.Pagetitle;
+            document.querySelector("#req_info").innerHTML=Data.info;
+           
+        };
+
     </script>
     <script type="text/javascript"></script>
 </head>
 <body>
 <ul id="metals-id">
-   <li> <a href="" class="metal-class" data-page="iron">Iron</a><hr></li>
-   <li><a href="" class="metal-class" data-page="copper">Copper</a><hr></li>
-   <li><a href="" class="metal-class" data-page="gold">Gold</a><hr></li>
+   <li> <a href="" class="metal-class" data-page="iron">Iron</a></li>
+   <li><a href="" class="metal-class" data-page="copper">Copper</a></li>
+   <li><a href="" class="metal-class" data-page="gold">Gold</a></li>
 </ul>
 <hr>
 <p id="req_info"></p>
