@@ -16,6 +16,14 @@
             body {
                 padding-bottom: 55px;
             }
+            .hideButton
+            {   
+                float: right;
+                background-color: white;
+                color: red;
+                width:3%;
+                border:1px solid red;
+            }
 
     </style>
 
@@ -73,7 +81,15 @@
                 post.className = 'contents';
                 post.innerHTML = contents;
 
-                
+                const hideContent =document.createElement('button');
+                hideContent.className="hideButton";
+                hideContent.innerHTML="X";
+                post.append(hideContent);
+
+                hideContent.onclick=function(){
+                    this.parentElement.remove();
+                };
+
                 document.querySelector('#contents').append(post);
             };
 
@@ -82,5 +98,7 @@
 <body>
 <div id="contents"></div>
 
+</body>
+</html>
 </body>
 </html>
