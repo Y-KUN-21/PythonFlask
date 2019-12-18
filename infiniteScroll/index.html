@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>infinite scroll</title>
+
+    <style type="text/css">
+    .contents 
+            {
+                background-color:black;
+                color: white;
+                padding: 20px;
+                margin: 10px;
+            }
+
+            body {
+                padding-bottom: 55px;
+            }
+
+    </style>
+
+    <script type="text/javascript">
+
+
+        let count = 1;
+
+        let quantity=25;
+
+
+        document.addEventListener('DOMContentLoaded',loadContent);
+
+            window.onscroll= () =>
+            {
+                if (window.innerHeight + window.scrollY >= document.body.offsetHeight)
+                {
+                    loadContent();
+                }
+            };
+        
+        function loadContent()
+
+        {
+
+
+            const start = count;
+            const end = count+quantity-1;
+            count=end+1;
+
+
+
+            const request = new XMLHttpRequest();
+            request.open('POST','/contentpage');
+            request.onload=()=>{
+            const data=JSON.parse(request.responseText);
+            data.forEach(add_Content);
+
+        };
+
+
+            const data = new FormData();
+            data.append('start',start);
+            data.append('end',end);
+           
+
+            request.send(data);
+
+        };
+
+        function add_Content(contents){
+
+                
+                const post = document.createElement('p');
+                post.className = 'contents';
+                post.innerHTML = contents;
+
+                
+                document.querySelector('#contents').append(post);
+            };
+
+    </script>
+</head>
+<body>
+<div id="contents"></div>
+
+</body>
+</html>
