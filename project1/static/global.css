@@ -1,0 +1,25 @@
+body
+{
+	background-color:#212121;
+}
+.lead
+{
+	font-weight: normal;
+	font-family: Georgia;
+	text-align: center;
+	color:white;
+	font-size: 30px;
+}
+.cover-heading
+{
+	margin-top: 10%;
+	text-align: center;
+	font-family: Georgia;
+	font-size: 60px;
+	padding: 50px;
+	color:white;
+}
+.form-group
+{
+	color: black;
+}
