@@ -34,33 +34,78 @@
     </ul>
   </div>
 </nav>
- <form>
-<div class="container center_div">
-  <div class="col-md-6 col-xs-10 col-sm-8 col-lg-4">
-    <div class="card card-body mb-3 mx-md-n2.7 mx-lg-n4 mx-sm-n3 mx-xs-n2 mx-auto">
+<br>
+
+       <!--FLASHED MESSAGES -->
+
+       {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category,message in messages %}
+              <div class="alert alert -{{ category }}" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+<div class="mx-auto" >
+ <form action="{{url_for('register')}}" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="container fluid">
+        <div class="col-md-6 col-xs-10 col-sm-8 col-lg-4">
+    <div class="card card-body">
       <h3  class=" card-title text-center">Enter details.</h3>
+
+        <fieldset>
+
         <div class="form-group">
-          <label for="username">Username</label>
-            <input type="email" class="form-control" id="username">
-          </div>
+            {{ form.username.label(class="form-control-label") }}
+
+              {% if form.username.errors %}
+                  {{ form.username(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.username.errors%}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                  {% endif %}
+         </div>
+        
         <div class="form-group">
-          <label for="email_id">Email address</label>
-            <input type="email" class="form-control" id="email_id">
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
-             <small id="passwordHelp" class="form-text text-muted">Password must be atleast 8 digit long.</small>
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="Remember_me">
-            <label class="form-check-label" for="Remember_me">Remember me</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Register</button>
-      </div>
+            {{ form.email_id.label(class="form-control-label") }}
+                {% if form.email_id.errors %}
+                  {{ form.email_id(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.email_id.errors%}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                    {{ form.email_id(class="form-control form-control-lg") }}
+                {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.password.label(class="form-control-label") }}
+                {% if form.password.errors %}
+                  {{ form.password(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.password.errors%}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                    {{ form.password(class="form-control form-control-lg") }}
+                {% endif %}
+        </div></fieldset>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-primary") }}
+        </div>
     </div>
   </div>
-
+ </div> 
 </form>
   
 </body>
