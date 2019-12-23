@@ -1,8 +1,5 @@
 from flask import render_template, url_for, redirect, flash
-from flask_bootstrap import Bootstrap
-from Grantha import app
-from Grantha import db
-from Grantha import bcrypt
+from Grantha import app,db,bcrypt
 from Grantha.form import signupForm, loginForm
 from Grantha.models import User
 
@@ -13,8 +10,15 @@ def home():
 
 
 @app.route('/login', methods=['POST', 'GET'])
-def loginpage():
+def login():
     form = loginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email_id.data).first()
+        if user and bcrypt.check_password_hash(user.password,form.password.data):
+            flash("Logged in Successfully", 'success')
+            return redirect(url_for('home'))
+        else:
+            flash("Please check Your Email or Password.", 'danger')
     return render_template("login.html", title="Login", form=form)
 
 
@@ -26,6 +30,6 @@ def register():
         adduser = User(username=form.username.data, email=form.email_id.data, password=hashed_password)
         db.session.add(adduser)
         db.session.commit()
-        flash("Account created.", 'danger')
-        return redirect(url_for('loginpage'))
+        flash("Account created.", 'success')
+        return redirect(url_for('login'))
     return render_template("signup.html", title="SignUp", form=form)
