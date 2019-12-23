@@ -10,21 +10,18 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='global.css') }}">
 
-  
-  <!--Jquery-->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 
 </head>
 <body class="bg">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-transparent navbar-expand-lg justify-content-center">
   <a class="navbar-brand" href="#">Grantha</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -37,26 +34,24 @@
 <br>
 
        <!--FLASHED MESSAGES -->
+       <div class="Alert">
+         {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
 
-       {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category,message in messages %}
-              <div class="alert alert -{{ category }}" role="alert">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
-
-<div class="mx-auto" >
- <form action="{{url_for('register')}}" method="POST">
-    {{ form.hidden_tag() }}
-    <div class="container fluid">
-        <div class="col-md-6 col-xs-10 col-sm-8 col-lg-4">
-    <div class="card card-body">
-      <h3  class=" card-title text-center">Enter details.</h3>
-
-        <fieldset>
+ <section class="container-fluid">
+  <section class="d-flex justify-content-center">
+    <section class="col 12 col-md-8 col-xs-10 col-sm-8 col-lg-3">
+      <div class="card card-body border border-light">   
+        <form action="{{url_for('register')}}" method="POST">
+              {{ form.hidden_tag() }}
 
         <div class="form-group">
             {{ form.username.label(class="form-control-label") }}
@@ -101,12 +96,19 @@
                 {% endif %}
         </div></fieldset>
         <div class="form-group">
-          {{ form.submit(class="btn btn-primary") }}
+          {{ form.submit(class="btn btn-primary btn-block") }}
         </div>
+      </form>
     </div>
-  </div>
- </div> 
-</form>
+    </section>
+  </section>
+</section>  
+
   
+  <!--Jquery-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 </html>
